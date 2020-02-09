@@ -1,7 +1,9 @@
 package com.ing.bank.service;
 
-import com.ing.bank.forms.CustomerRegistrationForm;
+import com.ing.bank.forms.CustomerForm;
 import com.ing.bank.model.Customer;
+import com.ing.bank.view.CustomerView;
+import java.text.ParseException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -10,8 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 public interface CustomerService extends UserDetailsService {
 
-  Customer findByEmail(String email);
+    public Customer findByEmail(String email);
 
-  Customer save(CustomerRegistrationForm registrationForm);
+    public CustomerView save(CustomerForm registrationForm) throws ParseException;
 
 }

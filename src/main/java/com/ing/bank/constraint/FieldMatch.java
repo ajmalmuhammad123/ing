@@ -14,32 +14,32 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @author muhammad.ajmal
  */
 @Target({
-  TYPE,
-  ANNOTATION_TYPE
+    TYPE,
+    ANNOTATION_TYPE
 })
 @Retention(RUNTIME)
 @Constraint(validatedBy = FieldMatchValidator.class)
 @Documented
 public @interface FieldMatch {
 
-  String message() default "{constraints.field-match}";
+    String message() default "{constraints.field-match}";
 
-  Class< ?>[] groups() default {};
+    Class< ?>[] groups() default {};
 
-  Class< ? extends Payload>[] payload() default {};
+    Class< ? extends Payload>[] payload() default {};
 
-  String first();
+    String first();
 
-  String second();
+    String second();
 
-  @Target({
-    TYPE,
-    ANNOTATION_TYPE
-  })
-  @Retention(RUNTIME)
-  @Documented
-  @interface List {
+    @Target({
+        TYPE,
+        ANNOTATION_TYPE
+    })
+    @Retention(RUNTIME)
+    @Documented
+    @interface List {
 
-    FieldMatch[] value();
-  }
+        FieldMatch[] value();
+    }
 }

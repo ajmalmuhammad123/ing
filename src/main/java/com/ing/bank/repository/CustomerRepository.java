@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * @author muhammad.ajmal
  */
 @Repository
-public interface UserRepository extends JpaRepository< Customer, Long> {
+public interface CustomerRepository extends JpaRepository< Customer, Long> {
 
-  Customer findByEmail(String email);
+    Customer findByEmail(String email);
 }
