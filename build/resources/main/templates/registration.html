@@ -34,7 +34,7 @@
 
                     <div th:if="${param.success}">
                         <div class="alert alert-info">You've successfully registered to ING Bank..! 
-                            Your Account Number and details will be sent to your mail.!</div>
+                            Your Account Number and details will be sent to your mail.! You can login by using your mail and password</div>
                     </div>
 
                     <h1>Registration</h1>
@@ -56,7 +56,7 @@
                             <p class="error-message" th:each="error : ${#fields.errors('address')}" th:text="${error}">Validation error</p>
                         </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('dateOfBirth')}? 'has-error':''">
-                            <label for="dateOfBirth" class="control-label">Address</label> <input type="date" id="dateOfBirth" class="form-control" th:field="*{dateOfBirth}" />
+                            <label for="dateOfBirth" class="control-label">Date Of Birth</label> <input type="date" id="dateOfBirth" class="form-control" th:field="*{dateOfBirth}" />
                             <p class="error-message" th:each="error : ${#fields.errors('dateOfBirth')}" th:text="${error}">Validation error</p>
                         </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">

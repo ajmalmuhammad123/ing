@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ing.bank.service.CustomerService;
 import com.ing.bank.view.CustomerView;
 import java.text.ParseException;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  *
@@ -27,8 +28,11 @@ import java.text.ParseException;
 @RequestMapping("/registration")
 public class CustomerController {
 
-    private static final int START_HOUR = 1;
-    private static final int END_HOUR = 23;
+    @Value("${savings.account.reg.start.time}")
+    private Integer startHour;
+
+    @Value("${savings.account.reg.end.time}")
+    private Integer endHour;
 
     @Autowired
     private CustomerService customerService;
@@ -44,8 +48,8 @@ public class CustomerController {
     @GetMapping
     public String showRegistrationForm(Model model) {
         Date current = new Date();
-        Date start = getTime(START_HOUR);
-        Date end = getTime(END_HOUR);
+        Date start = getTime(startHour);
+        Date end = getTime(endHour);
         return (current.after(start) && current.before(end)) ? "registration" : "registrationNotAllowed";
     }
 
@@ -72,7 +76,7 @@ public class CustomerController {
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.set(Calendar.HOUR, hour);
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, 00);
         calendar.set(Calendar.SECOND, 00);
         return calendar.getTime();
